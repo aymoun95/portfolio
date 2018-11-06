@@ -39,7 +39,10 @@ class Projects extends Component {
       >
         {({ loading, error, data }) => {
           if (loading) return <p>Loading...</p>;
-          if (error) return <p>Error :(</p>;
+          if (error)
+            return (
+              <p>Sorry error fetching projects ,try reloading the page :(</p>
+            );
 
           return data.allCards.map(item => {
             console.log(item);
@@ -52,13 +55,6 @@ class Projects extends Component {
         }}
       </Query>
     );
-    // return Data.map((item, index) => {
-    //   return (
-    //     <Grid item key={index} sm={6} md={4} lg={4}>
-    //       <Project element={item} />
-    //     </Grid>
-    //   );
-    // });
   };
   render() {
     const { classes } = this.props;

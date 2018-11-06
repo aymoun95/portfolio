@@ -1,9 +1,13 @@
 import React from "react";
 import { Dialog, DialogContent } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
 import ModalInner from "./ModalInner";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
+import Slide from "@material-ui/core/Slide";
+
+function Transition(props) {
+  return <Slide direction="up" {...props} />;
+}
 
 const GET_IMAGES = gql`
   query Dog($id: ID!) {
@@ -23,20 +27,6 @@ const GET_IMAGES = gql`
   }
 `;
 
-const styles = theme => ({
-  paper: {
-    position: "absolute",
-    left: "5%",
-    top: "10%",
-    width: "90%",
-    height: "80%",
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
-    margin: `auto ${theme.spacing.unit * 4}`,
-    marginRight: theme.spacing.unit * 2
-  }
-});
 class Collapsed extends React.Component {
   images = id => (
     <Query query={GET_IMAGES} variables={{ id }}>
@@ -50,24 +40,14 @@ class Collapsed extends React.Component {
     </Query>
   );
   render() {
-    const { classes } = this.props;
     return (
-      // <Modal
-      //   aria-labelledby="simple-modal-title"
-      //   aria-describedby="simple-modal-description"
-      //   open={props.open}
-      //   onClose={props.handleClose}
-      // >
-      //   <div className={classes.paper}>
-      //     <ModalInner />
-      //   </div>
-      // </Modal>
-
       <Dialog
         open={this.props.open}
         onClose={this.props.handleClose}
         scroll="paper"
+        paperScrollPaper
         aria-labelledby="scroll-dialog-title"
+        TransitionComponent={Transition}
       >
         <DialogContent>{this.images(this.props.id)}</DialogContent>
       </Dialog>
@@ -75,4 +55,4 @@ class Collapsed extends React.Component {
   }
 }
 
-export default withStyles(styles)(Collapsed);
+export default Collapsed;

@@ -1,13 +1,10 @@
-#container {
-  overflow: scroll;
-}
 .card {
   background-color: #fff;
   min-width: 100%;
   min-height: 200px;
   display: flex;
   flex-direction: row;
-  overflow-x: scroll;
+
   flex-wrap: wrap;
 }
 
