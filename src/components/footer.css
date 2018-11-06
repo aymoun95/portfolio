@@ -1,0 +1,25 @@
+.contact-details {
+  display: inline-block;
+  font-weight: bold;
+  margin: 0 35px 45px 35px;
+  list-style-type: none;
+  border: 2px solid #ba68c8;
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  background: #e0ebe8;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  overflow: hidden;
+}
+
+.contact-details:hover {
+  background: #e4f1fe;
+  color: black;
+  text-decoration: none;
+}
+footer a {
+  color: white;
+}

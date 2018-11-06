@@ -1,0 +1,26 @@
+#realContent {
+  position: absolute;
+  top: 26.1vh;
+  color: rgb(12, 52, 75);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#responsiveImg {
+  max-width: 50%;
+  display: block;
+  height: auto;
+  justify-self: center;
+  border-radius: 8px;
+  position: relative;
+  left: 20%;
+  bottom: 20%;
+}
+
+#text {
+  box-sizing: border-box;
+  padding: 40px;
+}

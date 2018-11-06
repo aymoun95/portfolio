@@ -1,3 +1,8 @@
+html {
+  -ms-overflow-style: none; /* IE 10+ */
+  overflow: -moz-scrollbars-none; /* should hide scroll bar */
+}
+
 .App {
   text-align: center;
 }
