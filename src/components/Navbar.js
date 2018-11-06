@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { AppBar, Toolbar, Typography } from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
 import { withStyles } from "@material-ui/core/styles";
@@ -23,49 +23,93 @@ const inlineStyles = {
     alignItems: "center"
   }
 };
-const Navbar = props => {
-  const { classes } = props;
-  return (
-    <React.Fragment>
-      <AppBar position="fixed" className={classes.custom}>
-        <Toolbar className={classes.toolbar}>
-          <h1
-            style={{
-              alignText: "center",
-              marginTop: 5,
-              color: "rgb(12, 52, 75)",
-              fontWeight: "bold"
-            }}
-          >
-            Aymen Ben Zlaouia
-          </h1>
-          <a href="#" style={{ ...inlineStyles.links, ...{ right: "30%" } }}>
-            <Icon>home</Icon>
-            <Typography variant="h6" color="inherit" style={{ marginLeft: 5 }}>
-              Home
-            </Typography>
-          </a>
-          <a
-            href="#projects"
-            style={{ ...inlineStyles.links, ...{ right: "20%" } }}
-          >
-            <Icon>face</Icon>
-            <Typography variant="h6" color="inherit" style={{ marginLeft: 5 }}>
-              About
-            </Typography>
-          </a>
-          <a
-            href="#contact"
-            style={{ ...inlineStyles.links, ...{ right: "10%" } }}
-          >
-            <Icon>phone</Icon>
-            <Typography variant="h6" color="inherit" style={{ marginLeft: 5 }}>
-              Contact
-            </Typography>
-          </a>
-        </Toolbar>
-      </AppBar>
-    </React.Fragment>
-  );
-};
+class Navbar extends Component {
+  state = {
+    windowSize: window.innerWidth
+  };
+  componentDidMount() {
+    window.addEventListener("resize", this.handleResize);
+  }
+
+  componentWillUnMount() {
+    window.removeEventListener("resize", this.handleResize);
+  }
+  handleResize = e => {
+    const windowSize = window.innerWidth;
+    this.setState(prevState => {
+      return {
+        windowSize
+      };
+    });
+  };
+  render() {
+    const { classes } = this.props;
+    return (
+      <React.Fragment>
+        <AppBar position="fixed" className={classes.custom}>
+          <Toolbar className={classes.toolbar}>
+            <h1
+              style={{
+                alignText: "center",
+                marginTop: 5,
+                color: "rgb(12, 52, 75)",
+                fontWeight: "bold"
+              }}
+              id="name"
+            >
+              Aymen Ben Zlaouia
+            </h1>
+            {this.state.windowSize > 690 && (
+              <a
+                href="#name"
+                style={{ ...inlineStyles.links, ...{ right: "30%" } }}
+              >
+                {this.state.windowSize > 716 && <Icon>home</Icon>}
+
+                <Typography
+                  variant="h6"
+                  color="inherit"
+                  style={{ marginLeft: 5 }}
+                >
+                  Home
+                </Typography>
+              </a>
+            )}
+            {this.state.windowSize > 690 && (
+              <a
+                href="#projects"
+                style={{ ...inlineStyles.links, ...{ right: "20%" } }}
+              >
+                {this.state.windowSize > 780 && <Icon>face</Icon>}
+
+                <Typography
+                  variant="h6"
+                  color="inherit"
+                  style={{ marginLeft: 5 }}
+                >
+                  About
+                </Typography>
+              </a>
+            )}
+            {this.state.windowSize > 690 && (
+              <a
+                href="#contact"
+                style={{ ...inlineStyles.links, ...{ right: "10%" } }}
+              >
+                {this.state.windowSize > 960 && <Icon>phone</Icon>}
+                <Typography
+                  variant="h6"
+                  color="inherit"
+                  style={{ marginLeft: 5 }}
+                >
+                  Contact
+                </Typography>
+              </a>
+            )}
+          </Toolbar>
+        </AppBar>
+      </React.Fragment>
+    );
+  }
+}
 export default withStyles(styles)(Navbar);

@@ -45,7 +45,6 @@ class Projects extends Component {
             );
 
           return data.allCards.map(item => {
-            console.log(item);
             return (
               <Grid item key={item.id} sm={6} md={4} lg={4}>
                 <Project element={item} />
