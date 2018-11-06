@@ -51,12 +51,12 @@ class Main extends React.Component {
             </Typography>
             {this.state.windowSize > 718 && (
               <Typography variant="h6" color="inherit" paragraph>
-                I'm Aymen and i'm currently studying Faculty of Science of Tunis
-                (FST). I consider myself as junior software engineer who loves
-                javascript and react essentially.I've developed lots of projects
-                using also other technologies such as java and php(check them
-                below).If you love what i do ,please contact as i'm looking for
-                graduation project.
+                I'm Aymen and i'm currently studying at Faculty of Science of
+                Tunis (FST). I consider myself as junior software engineer who
+                loves javascript and react essentially.I've developed lots of
+                projects using also other technologies such as java and
+                php(check them below).If you like what i do ,please contact me
+                as i'm looking for graduation project.
               </Typography>
             )}
           </div>
